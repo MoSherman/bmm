@@ -24,7 +24,7 @@ for room in rooms: 			#for each list in the list rooms
 
 
     # Inserts the room number and reqion into the rooms table in the test database.
-    mycur.execute("""INSERT INTO rooms VALUES (%r, %r)""", (room_number, region))
+    mycur.execute("INSERT INTO rooms VALUES (%r, %r)", (room_number, region))
 
 conn.commit()   # Commit the changes to the table
 mycur.execute("SELECT * FROM rooms")
