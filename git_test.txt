@@ -1,1 +1,0 @@
-This is to check and make sure my clone of bmm project is pushing/pulling correctly from the bmm repo master branch.
