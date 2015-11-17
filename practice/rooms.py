@@ -5,12 +5,12 @@ host    = 'localhost'
 user    = 'mo'
 passwd  = 'muirwood'
 db      = 'test'
-    
-conn    = MySQLdb.connect(host='localhost', # Connect to test database
-                       user='mo', 
-                       passwd='muirwood', 
-                       db= 'test') 
 
+conn    = MySQLdb.connect(host=host, # Connect to test database
+                       user=user, 
+                       passwd=passwd, 
+                       db=db) 
+    
 mycur   = conn.cursor() # Creating my cursor
 
 # creates a 'rooms' list, with reader function of csv module

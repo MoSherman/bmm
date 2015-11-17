@@ -15,8 +15,12 @@ mycur   = conn.cursor() # Creating my cursor
 query = raw_input("What room are you looking for? ") # Querying the user for the room they want.
 
 # Selecting the information to be queryed. 
-answer = mycur.execute ("SELECT room_number, region FROM rooms WHERE (room_number == %r or region == %r)", query) 
-print answer
+answer = mycur.execute ("SELECT room_number, region FROM rooms WHERE (room_number = %r or region = %r)", (query,query)) 
+#print answer
+
+rows = mycur.fetchall()
+for row in rows:
+    print row
 
 #room = mycur.fetchone () # Fetches one row at a time from rooms table.
 
