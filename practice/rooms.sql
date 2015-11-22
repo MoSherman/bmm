@@ -4,8 +4,9 @@ use bmm;
 create table rooms
 (
 roomid mediumint auto_increment primary key,
-room_number mediumint not null,
-room_name varchar(255)
+room_number mediumint,
+room_name varchar(255),
+room_description text
 );
 
 create table objects_in_rooms
