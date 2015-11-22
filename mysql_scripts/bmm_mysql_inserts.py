@@ -7,29 +7,32 @@
     This is version 1.0 started on Sun Nov 22 14:21:42 GMT 2015.
 """
 
-import csv                  # Import the csv module
+import csv                  # Import csv module
 import MySQLdb              # Import MySQLdb module
-import bmm_mysql_connect    # Import my connection module
+import os                   # Import os
 
-bmm_mysql_connect.connect() # my attempt to import the mysql connection from a module, not sure if that runs the connection for the whole script
 
-#login   = csv.reader(file('/~/Projects/bmm_private/bmm_login.txt')) # Retrieve login details from secure file
+path  = os.path.expanduser('~/Projects/bmm_private/bmm_login.txt') # Specifying path to login details
+login = csv.reader(file(path)) # Creating a list of the login details                                       
 
 # Assign login details to connection variables
-#host    = login[0]
-#user    = login[1]
-#passwd  = login[2]
-#db      = login[3]
+for i in login:
+    host    = i[0]
+    user    = i[1]
+    passwd  = i[2]
+    db      = i[3]
 
 # Connect to test database
-#conn    = MySQLdb.connect(host=host, 
+conn    = MySQLdb.connect(host=host, 
                        user=user, 
                        passwd=passwd, 
                        db=db) 
-    
-#mycur   = conn.cursor() # Creating my cursor
 
-#rooms = csv.reader(file('/~/Projects/bmm_private/bmm_room_list.txt')) # Retrieve bmm room data 
+mycur   = conn.cursor() # Creating my cursor
+
+
+path2 = os.path.expanduser('~/Projects/bmm_private/bmm_room_list.txt') # Specifying path to room details
+rooms = csv.reader(file(path2)) # Creating a list of the room details 
 
 # Assign variables to each element in the bmm_rooms_list.txt
 # Executes SQL command to INSERT the VALUES into the apropriate columns in the rooms table of the bmm database
@@ -47,8 +50,8 @@ for room in rooms:
 
 conn.commit()   # Commit the changes to the table
 
-
-objects = csv.reader(file('/~/Projects/bmm_private/bmm_object_list.txt')) # Retrieve bmm object data
+path3 = os.path.expanduser('~/Projects/bmm_private/bmm_object_list.txt') # Specifying path to room details
+objects = csv.reader(file(path3)) # Creating a list of the room details 
 
 # Assign variables to each element in the bmm_object_list.txt
 # Executes SQL command to INSERT the VALUES into the apropriate columns in the objects table of the bmm database
