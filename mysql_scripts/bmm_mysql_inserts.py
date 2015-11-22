@@ -7,26 +7,29 @@
     This is version 1.0 started on Sun Nov 22 14:21:42 GMT 2015.
 """
 
-import csv      # Import the csv module
-import MySQLdb  # Import MySQLdb module
+import csv                  # Import the csv module
+import MySQLdb              # Import MySQLdb module
+import bmm_mysql_connect    # Import my connection module
 
-login   = csv.reader(file('/~/Projects/bmm_private/bmm_login.txt')) # Retrieve login details from secure file
+bmm_mysql_connect.connect() # my attempt to import the mysql connection from a module, not sure if that runs the connection for the whole script
+
+#login   = csv.reader(file('/~/Projects/bmm_private/bmm_login.txt')) # Retrieve login details from secure file
 
 # Assign login details to connection variables
-host    = login[0]
-user    = login[1]
-passwd  = login[2]
-db      = login[3]
+#host    = login[0]
+#user    = login[1]
+#passwd  = login[2]
+#db      = login[3]
 
 # Connect to test database
-conn    = MySQLdb.connect(host=host, 
+#conn    = MySQLdb.connect(host=host, 
                        user=user, 
                        passwd=passwd, 
                        db=db) 
     
-mycur   = conn.cursor() # Creating my cursor
+#mycur   = conn.cursor() # Creating my cursor
 
-rooms = csv.reader(file('bmm_room_list.txt')) # Retrieve bmm room data 
+#rooms = csv.reader(file('/~/Projects/bmm_private/bmm_room_list.txt')) # Retrieve bmm room data 
 
 # Assign variables to each element in the bmm_rooms_list.txt
 # Executes SQL command to INSERT the VALUES into the apropriate columns in the rooms table of the bmm database
@@ -45,54 +48,17 @@ for room in rooms:
 conn.commit()   # Commit the changes to the table
 
 
-objects = csv.reader(file('bmm_object_list.txt')) # Retrieve bmm object data
+objects = csv.reader(file('/~/Projects/bmm_private/bmm_object_list.txt')) # Retrieve bmm object data
 
 # Assign variables to each element in the bmm_object_list.txt
 # Executes SQL command to INSERT the VALUES into the apropriate columns in the objects table of the bmm database
 for item in objects:
     
     object_name         = item[0]
-    object_description  = item[1] 
-
-conn.close()    # Close connection to bmm database
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    object_description  = item[1]
     
+        mycur.execute("INSERT INTO objects (object_name,object_description) VALUES (%r, %r)", 
+                  (object_name,object_description))
+
+conn.commit()   # Commit the changes to the table
+conn.close()    # Close connection to bmm database  
