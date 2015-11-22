@@ -6,6 +6,9 @@ create table rooms
 roomid mediumint auto_increment primary key,
 room_number mediumint,
 room_name varchar(255),
+room_tag1 varchar(90),
+room_tag2 varchar(90),
+room_tag3 varchar(90),
 room_description text
 );
 
