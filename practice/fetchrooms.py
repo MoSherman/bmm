@@ -30,13 +30,26 @@ conn    = MySQLdb.connect(host=host,
 
 mycur   = conn.cursor() # Creating my cursor
 
+question = raw_input("What room number are you looking for? ") # Querying the user for the room they want.
 
-
-query = raw_input("What room are you looking for? ") # Querying the user for the room they want.
-
-mycur.execute ("SELECT * FROM rooms WHERE room_number = %r ", (query))
+mycur.execute ("SELECT * FROM rooms WHERE room_number = %r ", (question, )) # (query, ) makes the raw input a tuple I think which is required here for the cursor
 
 print mycur.fetchone()
+
+
+
+
+#answer = mycur.execute ("SELECT * FROM rooms WHERE room_number = %s ", (question)) # (query) works for single entries but error message on more, no error message with [query] but doesnt work
+
+
+#if answer == True:
+    #print mycur.fetchone()
+    
+#elif question == False:
+    #print "Sorry I couldn't find that room number!"
+
+#else:
+    #print "That seems to have not worked..."
 
   
 mycur.close()
