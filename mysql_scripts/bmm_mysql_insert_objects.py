@@ -1,5 +1,5 @@
 """ This python script pulls data from a *.txt file and passes it to the bmm MySQL database.
-    It's purpose is to automate the process of adding room information to the database.
+    It's purpose is to automate the process of adding object information to the database.
     
     This script is a part of the British Museum Map Project aka bmm. For more on the project see:
     https://github.com/MoSherman/bmm
