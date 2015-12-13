@@ -30,12 +30,16 @@ conn    = MySQLdb.connect(host=host,
 
 mycur   = conn.cursor() # Creating my cursor
 
+#mycur.execute("SELECT * FROM rooms")
+#print mycur.fetchall()
 
 query = raw_input("What room are you looking for? ") # Querying the user for the room they want.
 
-answer = mycur.execute ("SELECT room_number FROM rooms WHERE room_number = %r ", (query))
+answer = mycur.execute ("SELECT * FROM rooms WHERE room_number = %r ", (query))
 
-print answer
+#answer = mycur.execute ("SELECT * FROM rooms WHERE room_number = '1'")
+
+print mycur.fetchone()
 
 
 
