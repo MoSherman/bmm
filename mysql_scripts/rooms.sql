@@ -4,7 +4,7 @@ use bmm;
 create table rooms
 (
 roomid mediumint auto_increment primary key,
-room_number varchar(5),
+room_number varchar(50),
 room_name varchar(255),
 room_tag1 varchar(90),
 room_tag2 varchar(90),

@@ -49,19 +49,4 @@ for room in rooms:
                   (room_number,room_name,room_tag1,room_tag2,room_tag3,room_description))
 
 conn.commit()   # Commit the changes to the table
-
-path3 = os.path.expanduser('~/Projects/bmm_private/bmm_object_list.txt') # Specifying path to room details
-objects = csv.reader(file(path3)) # Creating a list of the room details 
-
-# Assign variables to each element in the bmm_object_list.txt
-# Executes SQL command to INSERT the VALUES into the apropriate columns in the objects table of the bmm database
-for item in objects:
-    
-    object_name         = item[0]
-    object_description  = item[1]
-    
-        mycur.execute("INSERT INTO objects (object_name,object_description) VALUES (%r, %r)", 
-                  (object_name,object_description))
-
-conn.commit()   # Commit the changes to the table
 conn.close()    # Close connection to bmm database  
