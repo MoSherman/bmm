@@ -43,6 +43,20 @@ elif answer == False:
 else:
     print "That seems to have not worked..."
 
+    
+query = raw_input("What room are you looking for? ") # Querying the user for the room they want.
+
+answer = mycur.execute ("SELECT room_number, room_name FROM rooms WHERE (room_number = %r or room_name = %r or room_tag1 = %r or room_tag2 = %r or room_tag3 = %r)", (query,query,query,query,query))
+if answer == True:
+    print mycur.fetchone()
+    
+elif answer == False:
+    print "Sorry I couldn't find that room number!"
+
+else:
+    print "That seems to have not worked..."
+
+
   
 mycur.close()
 conn.close()
