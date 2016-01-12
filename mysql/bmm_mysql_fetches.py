@@ -18,3 +18,5 @@ def room_search():
     answer = mycur.execute ("SELECT room_number, region FROM rooms WHERE (room_number = %r or region = %r or room_tag1 = %r or room_tag2 = %r or room_tag3 = %r)", (query,query,query,query,query)) 
     
     print answer
+
+room_search()
