@@ -30,7 +30,7 @@ def get_info(req):
     
     path    = os.path.expanduser('~/bmm_login.txt') # Specifying path to login details
     login   = csv.reader(file(path)) # Creating a list of the login details                                       
-
+    errors  = ""
     # Assign login details to connection variables
     for i in login:
         host    = i[0]
@@ -45,12 +45,11 @@ def get_info(req):
                            db=db) 
 
     mycur   = conn.cursor() # Creating my cursor
-    
-    answer = mycur.execute ("SELECT room_number, room_name, room_description FROM rooms WHERE (room_number LIKE %r or room_name LIKE %r or room_tag1 LIKE %r or room_tag2 LIKE %r or room_tag3 LIKE %r or room_description LIKE %r)", (query,query,query,query,query,query))
-	
-    if answer == True:
+    answer = mycur.execute ("SELECT room_number, room_name, room_description FROM rooms WHERE (room_number LIKE %r or room_name LIKE %r or room_tag1 LIKE %r or room_tag2 LIKE %r or room_tag3 LIKE %r)", ("%"+query+"%","%"+query+"%","%"+query+"%","%"+query+"%","%"+query+"%"))
+    if answer >=1:
         
         mycur.fetchone()
+        #errors = mycur.fetchwarnings()
         for i in mycur:
             room_number = i[0]
             room_name = i[1]
@@ -71,7 +70,7 @@ def get_info(req):
         </html>
         """ % (room_name.upper(), room_number, room_name, room_description)
     
-    elif answer == False:
+    elif answer == 0:
         return """
         <html><head>
             <title>No Results!</title>
@@ -87,15 +86,16 @@ def get_info(req):
     else:
         return """
         <html><head>
-            <title>404: Error</title>
+            <title>Error</title>
         </head>
         <body>
-            <h1>404: Error!!</h1>
+            <h1>Error!!</h1>
             <hr>
-            Sorry but we seem to have encountered an error!<br>           
+            Sorry but we seem to have encountered an error!<br>
+			%s <br>
         </body>
         </html>
-        """
+        """ % (errors)
 
     mycur.close()
     conn.close()
