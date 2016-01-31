@@ -30,7 +30,8 @@ def get_info(req):
     
     path    = os.path.expanduser('~/bmm_login.txt') # Specifying path to login details
     login   = csv.reader(file(path)) # Creating a list of the login details                                       
-    errors  = ""
+    html    = ""
+    
     # Assign login details to connection variables
     for i in login:
         host    = i[0]
@@ -48,54 +49,25 @@ def get_info(req):
     answer = mycur.execute ("SELECT room_number, room_name, room_description FROM rooms WHERE (room_number LIKE %r or room_name LIKE %r or room_tag1 LIKE %r or room_tag2 LIKE %r or room_tag3 LIKE %r)", ("%"+query+"%","%"+query+"%","%"+query+"%","%"+query+"%","%"+query+"%"))
     if answer >=1:
         
-        mycur.fetchone()
-        #errors = mycur.fetchwarnings()
+        mycur.fetchall()
         for i in mycur:
-            room_number = i[0]
-            room_name = i[1]
-            room_description = i[2]
+            room_number = i[0].strip('"\'')
+            room_name = i[1].strip('"\'')
+            room_description = i[2].strip('"\'')
+            html = html + "<h1>" + room_number + ": " + room_name + "</h1><hr/>Room Details:<br/>" + room_description
             
         #return mycur.fetchone()   #WORKING ONE!
             
-        return """
-        <html><head>
-            <title>%s</title>
-        </head>
-        <body>
-            <h1>%s: %s</h1>
-            <hr>
-            Room Details:<br>
-            %s <br>
-        </body>
-        </html>
-        """ % (room_name.upper(), room_number, room_name, room_description)
-    
+        
     elif answer == 0:
-        return """
-        <html><head>
-            <title>No Results!</title>
-        </head>
-        <body>
-            <h1>No Results Found!</h1>
-            <hr>
-            Sorry no results were returned, try a different search please!<br>           
-        </body>
-        </html>
-        """
+        html = "Sorry no results were returned, try a different search please!<br>"
 
     else:
-        return """
-        <html><head>
-            <title>Error</title>
-        </head>
-        <body>
-            <h1>Error!!</h1>
-            <hr>
-            Sorry but we seem to have encountered an error!<br>
-			%s <br>
-        </body>
-        </html>
-        """ % (errors)
+        html = "Sorry but we seem to have encountered an error!<br>"
 
     mycur.close()
     conn.close()
+
+    html = "<html><head><meta charset=\"UTF-8\"></meta><title>BMM</title></head><body>"+html+"</body></html>"
+    
+    return html
