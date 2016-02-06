@@ -82,7 +82,7 @@ def index():
     return html_head + """
     <div class="container-fluid bg-3 text-center">    
     <h1>Search for a Room</h1><br>   
-    <FORM value="form" action="get_info" method="post">
+    <FORM value="form" action="bmm.py/get_info" method="post">
          <P>            
             <INPUT type="search" name="search"><BR>
             <INPUT type="submit" value="Search"> 
