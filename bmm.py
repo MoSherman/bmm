@@ -103,11 +103,13 @@ def get_room(req):
 
     mycur   = conn.cursor() # Creating my cursor
     
-    result  = mycur.execute ("SELECT room_number, room_name, room_description FROM rooms WHERE room_number = %r"), (room_number)
+    #result  = mycur.execute ("SELECT room_number, room_name, room_description FROM rooms WHERE room_number = %r"), (room_number)
+    result  = mycur.execute ("SELECT room_number, room_name, room_description FROM rooms WHERE room_number = %r", room_number)
+
     
     mycur.fetchone()
     
-    for i in mycur():
+    for i in mycur:
         room_number = i[0].strip('"\'')
         room_name = i[1].strip('"\'')
         room_description = i[2].strip('"\'')
