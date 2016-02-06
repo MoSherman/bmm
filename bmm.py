@@ -56,7 +56,7 @@ html_head = """
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li><a href="bmm.py">Home</a></li>
-        <li><a href="rooms_all">Room List</a></li>        
+        <li><a href="bmm.py/rooms_all">Room List</a></li>        
         <li><a href="https://www.britishmuseum.org/PDF/pdfA4_allfloors.pdf" target="_blank">Map</a></li>
         <li><a href="about">About</a></li>    
       </ul>
