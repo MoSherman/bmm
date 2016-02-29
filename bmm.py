@@ -55,8 +55,8 @@ html_head = """
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li><a href="bmm.py">Home</a></li>
-        <li><a href="bmm.py/rooms_all">Room List</a></li>        
+        <li><a href="search">Search</a></li>
+        <li><a href="rooms_all">Room List</a></li>        
         <li><a href="https://www.britishmuseum.org/PDF/pdfA4_allfloors.pdf" target="_blank">Map</a></li>
         <li><a href="about">About</a></li>    
       </ul>
@@ -72,12 +72,11 @@ html_footer = """
 <footer class="container-fluid text-center">
   <p>Copyright &copy; Moriah Sherman 2016</p>
 </footer>
-
 </body>
 </html>
 """
 
-def index():
+def search():
 
     return html_head + """
     <div class="container-fluid bg-3 text-center">    
