@@ -51,7 +51,7 @@ html_head = """
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="bmm.py">BMM</a>
+      <a class="navbar-brand" href="search">BMM</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
@@ -81,7 +81,7 @@ def search():
     return html_head + """
     <div class="container-fluid bg-3 text-center">    
     <h1>Search for a Room</h1><br>   
-    <FORM value="form" action="bmm.py/get_info" method="post">
+    <FORM value="form" action="get_info" method="post">
          <P>            
             <INPUT type="search" name="search"><BR>
             <INPUT type="submit" value="Search"> 
