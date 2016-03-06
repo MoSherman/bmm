@@ -1,3 +1,23 @@
-This repo contains all pratice, work and versions of my British Museum Map project. 
+#####################################################################
 
-This repo was created on Sat Nov  7 13:38:00 GMT 2015.
+
+A repository for my simple search application the British Museum Map.
+
+This project is an ongoing attempt to provide an easily searchable 
+index of the British Museum's rooms. This project uses a Bootstrap 
+template to be accesable to both desktop and mobile users. The backend 
+runs on a MySQL database with Python functions serving the information 
+searched for. 
+
+Future iterations of the project will hopefully include an Museum 
+Object Search, images of rooms and objects, more detailed descriptions, 
+and improved aesthetics. 
+
+All information pertaining to the museum itself is the Copyright © of 
+Trustees of the British Museum.
+
+Please enjoy and if you have any questions or comments you can contact 
+me through my CV website: www.MoriahSherman.com.
+
+
+#####################################################################
