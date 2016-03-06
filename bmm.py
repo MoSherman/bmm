@@ -51,7 +51,7 @@ html_head = """
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="search">BMM</a>
+      <a class="navbar-brand" href="search">British Museum Map</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
@@ -98,7 +98,7 @@ def about():
     <div class="col-sm-2"> 
     </div>
     <div class="col-sm-8"> 
-        <p class=text-justify>This project is an ongoing attempt to provide an easily searchable index of the British Museum\'s rooms. This project uses a Bootstrap template to be accesable to both desktop and mobile users. The backend runs on a MySQL database with Python functions serving the information searched for. Future iterations of the project will hopefully include an Museum Object Search, images of rooms and objects, more detailed descriptions, and improved aesthetics. The code for this project can be viewed at my <a href="http://GitHub.com/MoSherman/bmm" target="_blank">GitHub.com bmm repository</a>.</p>
+        <p class=text-justify>This project is an ongoing attempt to provide an easily searchable index of the British Museum\'s rooms. This project uses a Bootstrap template to be accesable to both desktop and mobile users. The backend runs on a MySQL database with Python functions serving the information searched for. Future iterations of the project will hopefully include an Museum Object Search, images of rooms and objects, more detailed descriptions, and improved aesthetics. The code for this project can be viewed at my <a href="http://GitHub.com/MoSherman/bmm" target="_blank">GitHub.com bmm repository</a>. All information pertaining to the museum itself is the Copyright &copy; of Trustees of the British Museum.</p>
     </div>
     <div class="col-sm-2"> 
     </div>
@@ -108,7 +108,7 @@ def about():
     """
 
 def rooms_all():
-    path    = os.path.expanduser('~/bmm_login.txt') # Specifying path to login details
+    path    = os.path.expanduser('~/moriah/bmm_private/server_bmm_login.txt') # Specifying path to login details
     login   = csv.reader(file(path)) # Creating a list of the login details                                       
     html    = ""
     
@@ -148,7 +148,7 @@ def get_info(req):
     info    = req.form
     query   = info['search'] #assigning variable query to whatever the user inputs
     
-    path    = os.path.expanduser('~/bmm_login.txt') # Specifying path to login details
+    path    = os.path.expanduser('~/moriah/bmm_private/server_bmm_login.txt') # Specifying path to login details
     login   = csv.reader(file(path)) # Creating a list of the login details                                       
     html    = ""
     
@@ -203,7 +203,7 @@ def get_room(req):
     
     #return room_number
     
-    path    = os.path.expanduser('~/bmm_login.txt') # Specifying path to login details
+    path    = os.path.expanduser('~/moriah/bmm_private/server_bmm_login.txt') # Specifying path to login details
     login   = csv.reader(file(path)) # Creating a list of the login details 
     
     # Assign login details to connection variables

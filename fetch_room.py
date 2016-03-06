@@ -48,8 +48,9 @@ query = raw_input("What room are you looking for? ") # Querying the user for the
 
 #answer = mycur.execute ("SELECT room_number, room_name FROM rooms WHERE (room_number LIKE '%%%r%%' or room_name LIKE '%%%r%%' or room_tag1 LIKE '%%%r%%' or room_tag2 LIKE '%%%r%%' or room_tag3 LIKE '%%%r%%')", (query,query,query,query,query))
 #answer = mycur.execute ("SELECT room_number, room_name FROM rooms WHERE (room_number LIKE '%%r%' or room_name LIKE '%%r%' or room_tag1 LIKE '%%r%' or room_tag2 LIKE '%%r%' or room_tag3 LIKE '%%r%')", (query,query,query,query,query))
-answer = mycur.execute ("SELECT room_number, room_name FROM rooms WHERE (room_number LIKE %r or room_name LIKE %r or room_tag1 LIKE %r or room_tag2 LIKE %r or room_tag3 LIKE %r)", (query,query,query,query,query))
+#answer = mycur.execute ("SELECT room_number, room_name FROM rooms WHERE (room_number LIKE %r or room_name LIKE %r or room_tag1 LIKE %r or room_tag2 LIKE %r or room_tag3 LIKE %r)", (query,query,query,query,query))
 #answer = mycur.execute ("SELECT room_number, room_name FROM rooms WHERE CONTAIN ((room_number, %r) or (room_name, %r) or (room_tag1, %r) or (room_tag2, %r) or (room_tag3, %r))", (query,query,query,query,query))
+answer = mycur.execute ("SELECT room_number, room_name FROM rooms WHERE (room_number LIKE %r or room_name LIKE %r or room_tag1 LIKE %r or room_tag2 LIKE %r or room_tag3 LIKE %r)", ("%"+query+"%","%"+query+"%","%"+query+"%","%"+query+"%","%"+query+"%"))
 
 
 if answer == True:
@@ -57,6 +58,9 @@ if answer == True:
     
 elif answer == False:
     print "Sorry I couldn't find that room!"
+	
+elif len(query) != 2:
+    print "Sorry I need more information than that! Please put in more then two characters!"	
 
 else:
     print "That seems to have not worked..."

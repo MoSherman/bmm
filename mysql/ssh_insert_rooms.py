@@ -12,7 +12,7 @@ import MySQLdb              # Import MySQLdb module
 import os                   # Import os
 
 
-path  = os.path.expanduser('~/Projects/bmm_private/bmm_login.txt') # Specifying path to login details
+path  = os.path.expanduser('~/www/bmm_private/server_bmm_login.txt') # Specifying path to login details
 login = csv.reader(file(path)) # Creating a list of the login details                                       
 
 # Assign login details to connection variables
@@ -31,7 +31,7 @@ conn    = MySQLdb.connect(host=host,
 mycur   = conn.cursor() # Creating my cursor
 
 
-path2 = os.path.expanduser('~/Projects/bmm_private/bmm_room_list.txt') # Specifying path to room details
+path2 = os.path.expanduser('~/www/bmm_private/server_bmm_room_list.txt') # Specifying path to room details
 rooms = csv.reader(file(path2)) # Creating a list of the room details 
 
 # Assign variables to each element in the bmm_rooms_list.txt
